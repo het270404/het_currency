@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        body {
+            background-color: #AFEEEE;
+            text-align: center;
+        }
+
+        h1 {
+            margin-bottom: 20px;
+        }
+
+        #currencyConverter {
+            width: 300px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        #currencyConverter input[type='text'],
+        #currencyConverter select,
+        #currencyConverter button {
+            margin-bottom: 10px;
+        }
+
+        #convertButton {
+            background-color: darkblue;
+            color: white;
+        }
+
+        #convertButton:hover {
+            background-color: #B22222;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>CURRENCY CONVERTER</h1>
+
+    <div id="currencyConverter">
+        <p>Enter an amount in INR (Indian Rupees):</p>
+        <input type="text" id="inrInput">
+        <select id="currencySelect">
+            <option value="usd">USD</option>
+            <option value="chf">CHF</option>
+            <option value="kyd">KYD</option>
+            <option value="eur">EUR</option>
+            <option value="gip">GIP</option>
+            <option value="gbp">GBP</option>
+            <option value="jod">JOD</option>
+            <option value="omr">OMR</option>
+            <option value="bhd">BHD</option>
+            <option value="kwd">KWD</option>
+        </select>
+        <button id="convertButton" onclick="convertCurrency()">Convert</button>
+
+        <p id="result"></p>
+    </div>
+
+    <script>
+        function convertCurrency() {
+            let inrValue = document.getElementById("inrInput").value;
+            let currencyValue = document.getElementById("currencySelect").value;
+            let exchangeRates = {
+                usd: 88,
+                chf: 95.04,
+                kyd: 98.40,
+                eur: 89.90,
+                gip: 104.52,
+                gbp: 104.52,
+                jod: 115.55,
+                omr: 212.93,
+                bhd: 217.45,
+                kwd: 266.82
+            };
+
+            let result = (parseFloat(inrValue) / exchangeRates[currencyValue]).toFixed(2);
+
+            document.getElementById("result").innerHTML =
+                inrValue + " INR is equivalent to " + result + " " + currencyValue.toUpperCase();
+
+        }
+    </script>
+
+</body>
+
+</html>
